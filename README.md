@@ -150,7 +150,7 @@ french.translate('%d product', 1).then(
 
 ## Why gettext `.mo` files?
 
-Although I prefer to use `json` format, `mo` format are better as it supports plural form and context.
+Although I prefer to use `json` format, `mo` format are better as it supports plural form and context. I don't want to embed `po` files in my app due to its bigger footprint.
 
 ## Notes
 
