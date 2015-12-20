@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F24A65E01C19B9FC007767E9 /* RNIntl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F24A65DF1C19B9FC007767E9 /* RNIntl.h */; };
+		F24A65E21C19B9FC007767E9 /* RNIntl.m in Sources */ = {isa = PBXBuildFile; fileRef = F24A65E11C19B9FC007767E9 /* RNIntl.m */; };
+		F274BAFE1C1C200700DA222E /* GettextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F274BAFD1C1C200700DA222E /* GettextParser.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F24A65DA1C19B9FC007767E9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				F24A65E01C19B9FC007767E9 /* RNIntl.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F24A65DC1C19B9FC007767E9 /* libRNIntl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIntl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24A65DF1C19B9FC007767E9 /* RNIntl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNIntl.h; sourceTree = "<group>"; };
+		F24A65E11C19B9FC007767E9 /* RNIntl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNIntl.m; sourceTree = "<group>"; };
+		F274BAFD1C1C200700DA222E /* GettextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GettextParser.m; sourceTree = "<group>"; };
+		F274BAFF1C1C201700DA222E /* GettextParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GettextParser.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F24A65D91C19B9FC007767E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F24A65D31C19B9FC007767E9 = {
+			isa = PBXGroup;
+			children = (
+				F24A65DE1C19B9FC007767E9 /* RNIntl */,
+				F24A65DD1C19B9FC007767E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F24A65DD1C19B9FC007767E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F24A65DC1C19B9FC007767E9 /* libRNIntl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F24A65DE1C19B9FC007767E9 /* RNIntl */ = {
+			isa = PBXGroup;
+			children = (
+				F24A65DF1C19B9FC007767E9 /* RNIntl.h */,
+				F24A65E11C19B9FC007767E9 /* RNIntl.m */,
+				F274BAFD1C1C200700DA222E /* GettextParser.m */,
+				F274BAFF1C1C201700DA222E /* GettextParser.h */,
+			);
+			path = RNIntl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F24A65DB1C19B9FC007767E9 /* RNIntl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F24A65E51C19B9FC007767E9 /* Build configuration list for PBXNativeTarget "RNIntl" */;
+			buildPhases = (
+				F24A65D81C19B9FC007767E9 /* Sources */,
+				F24A65D91C19B9FC007767E9 /* Frameworks */,
+				F24A65DA1C19B9FC007767E9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNIntl;
+			productName = RNIntl;
+			productReference = F24A65DC1C19B9FC007767E9 /* libRNIntl.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F24A65D41C19B9FC007767E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Taegon Kim";
+				TargetAttributes = {
+					F24A65DB1C19B9FC007767E9 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = F24A65D71C19B9FC007767E9 /* Build configuration list for PBXProject "RNIntl" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F24A65D31C19B9FC007767E9;
+			productRefGroup = F24A65DD1C19B9FC007767E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F24A65DB1C19B9FC007767E9 /* RNIntl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F24A65D81C19B9FC007767E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F274BAFE1C1C200700DA222E /* GettextParser.m in Sources */,
+				F24A65E21C19B9FC007767E9 /* RNIntl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F24A65E31C19B9FC007767E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F24A65E41C19B9FC007767E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F24A65E61C19B9FC007767E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/../../React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNIntl/RNIntl-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F24A65E71C19B9FC007767E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/../../React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNIntl/RNIntl-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F24A65D71C19B9FC007767E9 /* Build configuration list for PBXProject "RNIntl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24A65E31C19B9FC007767E9 /* Debug */,
+				F24A65E41C19B9FC007767E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F24A65E51C19B9FC007767E9 /* Build configuration list for PBXNativeTarget "RNIntl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24A65E61C19B9FC007767E9 /* Debug */,
+				F24A65E71C19B9FC007767E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F24A65D41C19B9FC007767E9 /* Project object */;
+}

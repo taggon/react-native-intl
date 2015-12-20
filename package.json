@@ -1,0 +1,31 @@
+{
+  "name": "react-native-intl",
+  "version": "0.1.0",
+  "description": "React Native module shipped native Intl implementation and Translation extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taggon/react-native-intl.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "i18n",
+    "l10n",
+    "intl",
+    "ios",
+    "android"
+  ],
+  "author": "Taegon Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taggon/react-native-intl/issues"
+  },
+  "homepage": "https://github.com/taggon/react-native-intl#readme",
+  "dependencies": {
+    "react-native": "^0.16.0"
+  }
+}
