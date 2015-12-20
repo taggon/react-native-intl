@@ -112,6 +112,42 @@ new Intl.DateTimeFormat('en-US').format(date).then(
 
 If you omit the locale identifier, system locale will be used by default.
 
+## How to get a translation
+Load `react-native-intl` module in your JavaScript code and create an translation instance with a your locale. Then, call `translate` method that takes message id and optional plural counter. Note that it returns a Promise.
+
+```
+const Intl = require('react-native-intl');
+const french = new Intl.Translation('fr-FR');
+
+french.translate('Hello').then(
+	str => console.log(str) // "Allô"
+);
+
+french.translate('Not translated message').then(
+	str => console.log(str) // "Not translated message"
+);
+
+french.translate('one product').then(
+	str => console.log(str) // "un produit"
+);
+
+french.translate('%d products', 2).then(
+	str => console.log(str) // "%d produits"
+);
+
+/*
+ Actually singular/plural messages shares message id.
+ You can get plural messages with singular id and vice versa.
+*/
+french.translate('one product', 2).then(
+	str => console.log(str) // "%d produits"
+);
+
+french.translate('%d product', 1).then(
+	str => console.log(str) // "un produit"
+);
+```
+
 ## Why gettext `.mo` files?
 
 Although I prefer to use `json` format, `mo` format are better as it supports plural form and context.
@@ -122,4 +158,4 @@ Because of the difference of platforms, some features can be limited based on pl
 
 ## Feedback
 
-This project is in early stage and I'm very new in both native platforms and even the programming languages. The code may not be fine, unsafe or insecure. If you find anything, don't hesitate to leave your feedback. I will welcome any feedback from you including bug reports, suggestions and even english (because it is not my native tongue).
+This project is in early stage and I'm very new in both native platforms and even the programming languages. In fact, I've created this module learning them from basic syntax. So, the code may not be fine, unsafe or insecure. If you find anything, don't hesitate to leave your feedback. I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction (because it is not my native tongue).
