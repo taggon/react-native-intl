@@ -49,28 +49,28 @@ RCT_EXPORT_METHOD(formatNumber: (nonnull NSNumber *)number
 
         // useGrouping
         [formatter setUsesGroupingSeparator:[options objectForKey:@"useGrouping"] ? options[@"useGrouping"] : @YES];
-        
+
         // minimumIntegerDigits
-        formatter.mimumIntegerDigits = ([options objectForKey:@"mimumIntegerDigits"] != nil) ? options[@"minimumIntegerDigits"] : 1;
-        
+        [formatter setMinimumIntegerDigits:[options objectForKey:@"mimumIntegerDigits"] ? (NSUInteger)options[@"minimumIntegerDigits"] : 1];
+
         // minimumFractionDigits
         if ([options objectForKey:@"minimumFractionDigits"]) {
-            formatter.minimumFractionDigits = options[@"minimumFractionDigits"];
+            [formatter setMinimumFractionDigits: (NSUInteger)options[@"minimumFractionDigits"]];
         } else if (![style isEqualToString:@"currency"]) {
-            formatter.minimumFractionDigits = 0;
+            [formatter setMinimumFractionDigits:0];
         }
-        
+
         // maximumFractionDigits
         if ([options objectForKey:@"maximumFractionDigits"]) {
-            formatter.maximumFractionDigits = options[@"maximumFractionDigits"];
+            [formatter setMaximumFractionDigits: (NSUInteger)options[@"maximumFractionDigits"]];
         }
-        
+
         // minimumSignificantDigits
-        formatter.minimumSignificantDigits = [options objectForKey:@"minimumSignificantDigits"] ? options[@"minimumSignificantDigits"] : 1;
-  
+        [formatter setMinimumSignificantDigits: [options objectForKey:@"minimumSignificantDigits"] ? (NSUInteger)options[@"minimumSignificantDigits"] : 1];
+
         // maximumSignificantDigits
         if ([options objectForKey:@"maximumSignificantDigits"]) {
-            formatter.maximumSignificantDigits = options[@"maximumSignificantDigits"];
+            [formatter setMaximumSignificantDigits: (NSUInteger)options[@"maximumSignificantDigits"]];
         }
     }
 
