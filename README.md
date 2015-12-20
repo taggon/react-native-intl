@@ -1,2 +1,125 @@
 # react-native-intl
-Native Intl implementation with translation extension
+Native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) implementation and Translation extension. The extension loads translation catalog from [gettext `.mo` files](https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html). Note that PO files are **not supported.**
+
+## Features
+
+* [*Collator*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator)  
+**Not yet supported**
+* [*DateTimeFormat*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat)  
+Constructor for objects that format dates and times to match a specified locale.
+* [*NumberFormat*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat)  
+Constructor for objects that format numbers to match a specified locale.
+* *Translation* (not a part of ECMAScript)  
+Constructor for objects that translate messages into another languages using `.mo` files.
+
+## Installation
+
+```
+$ npm install react-native-intl --save
+```
+
+### iOS Setup
+Once you've installed the module, you need to integrate it into the Xcode project of your React Native app. To do this, do the following steps.
+
+1. Open your app's Xcode project
+2. Find `RNIntl.xcodeproj` file within the `node_modules/react-native-intl` directory, and drag it into `Libraries` category in Xcode.
+3. Go to the "Build Phases" tab in your project configuration.
+4. Drag `libRNIntl.a` from `Libraries/RNIntl.xcodeproj` into the "Link Binary With Libraries" section of your project's "Build Phases" configuration.
+5. To translate messages, create `i18n` folder and put `.mo` files into it. Drag the folder to just below the project in Xcode. Choose *Create folder references*.
+
+### Android Setup
+In order to use this module in your Android project, take the following steps.
+
+1. In your `android/settings.gradle` file, add the following code:
+  ```
+  include ':rnintl'
+  project(':rnintl').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-intl/android')
+  ```
+2. In your `android/app/build.gradle` file, add `:react-native-intl` project as a dependency (note that **app** folder):
+  ```
+  ...
+  dependencies {
+    ...
+    compile project(':react-native-intl')
+  }
+  ```
+3. Update your `MainActivity.java` file to look like this (without preceding the `+` signs).
+  ```diff
+  package com.myapp;
+
+  + import kim.taegon.rnintl.ReactNativeIntlPackage;
+
+  ....
+
+  public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
+
+    private ReactInstanceManager mReactInstanceManager;
+    private ReactRootView mReactRootView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      mReactRootView = new ReactRootView(this);
+
+      mReactInstanceManager = ReactInstanceManager.builder()
+        .setApplication(getApplication())
+        .setBundleAssetName("index.android.bundle")
+        .setJSMainModuleName("index.android")
+        .addPackage(new MainReactPackage())
+  +    .addPackage(new ReactNativeIntlPackage())
+        .setUseDeveloperSupport(BuildConfig.DEBUG)
+        .setInitialLifecycleState(LifecycleState.RESUMED)
+        .build();
+
+      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
+
+      setContentView(mReactRootView);
+    }
+    ...
+  }
+  ```
+4. To translate messages, create `i18n` folder and put `.mo` files into it. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
+
+## API
+* **DateTimeFormat** objects are similar to JavaScript  [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) except `format` method returns a Promise.
+* **NumberFormat** objects are similar to JavaScript [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) except `format` method returns a Promise.
+* **Translation** objects load translation catalog from local file system and translates the passed message into another language. It also supports plural forms.
+  * Constructor can take a locale identifier as an argument.
+    ```
+    new Intl.Translation([locale])
+    ```
+  * `format` returns a Promise that contains translation string matched to the passed message id. If the object can't find a proper string, it returns the message id.
+    ```
+    format(msgid[, pluralCounter])
+    ```
+
+## How to format date/number
+Load `react-native-intl` module in your JavaScript code.
+
+```
+const Intl = require('react-native-intl');
+```
+
+Like [the JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), create an instance with/without a locale identifier and call its `format` method. Unlike  JavaScript, the method returns a Promise because React Native's JS-Native bridge should work asynchronous.
+
+```
+var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+new Intl.DateTimeFormat('en-US').format(date).then(
+	str => console.log(str)
+);
+```
+
+If you omit the locale identifier, system locale will be used by default.
+
+## Why gettext `.mo` files?
+
+Although I prefer to use `json` format, `mo` format are better as it supports plural form and context.
+
+## Notes
+
+Because of the difference of platforms, some features can be limited based on platform.
+
+## Feedback
+
+This project is in early stage and I'm very new in both native platforms and even the programming languages. The code may not be fine, unsafe or insecure. If you find anything, don't hesitate to leave your feedback. I will welcome any feedback from you including bug reports, suggestions and even english (because it is not my native tongue).
