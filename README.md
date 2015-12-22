@@ -46,7 +46,7 @@ In order to use this module in your Android project, take the following steps.
   ...
   dependencies {
     ...
-    compile project(':react-native-intl')
+    compile project(':rnintl')
   }
   ```
 
