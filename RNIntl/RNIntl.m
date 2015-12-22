@@ -50,7 +50,7 @@ RCT_EXPORT_METHOD(formatNumber: (double)number
         // TODO: currencyDisplay
 
         // useGrouping
-        [formatter setUsesGroupingSeparator: [options objectForKey:@"useGrouping"] ? [options[@"useGrouping"] isEqualToString:@"1"] : YES ];
+        [formatter setUsesGroupingSeparator: [options objectForKey:@"useGrouping"] ? [options[@"useGrouping"] boolValue] : YES ];
 
         // minimumIntegerDigits
         [formatter setMinimumIntegerDigits:[options objectForKey:@"mimumIntegerDigits"] ? (int)options[@"minimumIntegerDigits"] : 1];
