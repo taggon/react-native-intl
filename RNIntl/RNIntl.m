@@ -117,7 +117,7 @@ RCT_EXPORT_METHOD(formatDate: (NSDate *) date
         
         // hour12
         if ([options objectForKey:@"hour12"]) {
-            if ([options[@"hour12"] isEqualToString:@"TRUE"]) {
+            if ((bool)options[@"hour12"]) {
                 template = [template stringByReplacingOccurrencesOfString:@"H" withString:@"h"];
             } else {
                 template = [template stringByReplacingOccurrencesOfString:@"h" withString:@"H"];

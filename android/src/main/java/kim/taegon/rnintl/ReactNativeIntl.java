@@ -146,16 +146,18 @@ public class ReactNativeIntl extends ReactContextBaseJavaModule {
                     df.setTimeZone(tz);
                 }
 
-                // template
-                if (options.hasKey("template")) {
-                    String pattern = DateFormat.getBestDateTimePattern(locale, options.getString("template"));
-                    df.applyLocalizedPattern(pattern);
-                }
+		String pattern = DateFormat.getBestDateTimePattern(locale, options.getString("template"));
 
-                // TODO: hour12
+                // hour12
                 if (options.hasKey("hour12")) {
-
+		  if (options.getBoolean("hour12")) {
+		    pattern = pattern.replace('H', 'h');
+		  } else {
+		    pattern = pattern.replace('h', 'H');
+		  }
                 }
+
+		df.applyLocalizedPattern(pattern);
             }
 
             promise.resolve(df.format(date));
@@ -170,12 +172,14 @@ public class ReactNativeIntl extends ReactContextBaseJavaModule {
              Locale locale = Locale.forLanguageTag(localeIdentifier);
              Context context = getReactApplicationContext().getApplicationContext();
              InputStream stream = null;
+	     String assetDir = "i18n/";
+	     String assetName = localeIdentifier.replace('-', '_');
 
              try {
-                 stream = context.getAssets().open("i18n/"+localeIdentifier+".mo");
+                 stream = context.getAssets().open(assetDir+assetName+".mo");
              } catch(IOException e) {
                  // fallback - using language only
-                 stream = context.getAssets().open("i18n/"+locale.getLanguage()+".mo");
+                 stream = context.getAssets().open(assetDir+locale.getLanguage()+".mo");
              }
 
              GettextParser parser = new GettextParser(stream);
