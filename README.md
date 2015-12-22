@@ -141,7 +141,7 @@ Load `react-native-intl` module in your JavaScript code and create an translatio
 const Intl = require('react-native-intl');
 const french = new Intl.Translation('fr-FR');
 
-french.getTranslator( _ => {
+french.getTranslator().then( _ => {
   console.log(_("Hello")); // "Allô"
   console.log(_("Not translated message")); // "Not translated message" returns the original message
   console.log(_("one product")); // "un produit"
