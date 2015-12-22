@@ -75,16 +75,16 @@ In order to use this module in your Android project, take the following steps.
         .setJSMainModuleName("index.android")
         .addPackage(new MainReactPackage())
 +     .addPackage(new ReactNativeIntlPackage())
-        .setUseDeveloperSupport(BuildConfig.DEBUG)
-        .setInitialLifecycleState(LifecycleState.RESUMED)
-        .build();
+          .setUseDeveloperSupport(BuildConfig.DEBUG)
+          .setInitialLifecycleState(LifecycleState.RESUMED)
+          .build();
 
-      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
 
-      setContentView(mReactRootView);
+        setContentView(mReactRootView);
+      }
+      ...
     }
-    ...
-  }
   ```
 
 4. To translate messages, create `i18n` folder and put `.mo` files into it. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
