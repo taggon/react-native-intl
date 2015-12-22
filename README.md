@@ -34,19 +34,24 @@ Once you've installed the module, you need to integrate it into the Xcode projec
 In order to use this module in your Android project, take the following steps.
 
 1. In your `android/settings.gradle` file, add the following code:
+
   ```
   include ':rnintl'
   project(':rnintl').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-intl/android')
   ```
+
 2. In your `android/app/build.gradle` file, add `:react-native-intl` project as a dependency (note that **app** folder):
+
   ```
   ...
   dependencies {
     ...
-      compile project(':react-native-intl')
+    compile project(':react-native-intl')
   }
   ```
+
 3. Update your `MainActivity.java` file to look like this (without preceding the `+` signs).
+
   ```diff
   package com.myapp;
 
@@ -60,27 +65,28 @@ In order to use this module in your Android project, take the following steps.
     private ReactRootView mReactRootView;
 
     @Override
-      protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	mReactRootView = new ReactRootView(this);
+    protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      mReactRootView = new ReactRootView(this);
 
-	mReactInstanceManager = ReactInstanceManager.builder()
-	  .setApplication(getApplication())
-	  .setBundleAssetName("index.android.bundle")
-	  .setJSMainModuleName("index.android")
-	  .addPackage(new MainReactPackage())
-	  +    .addPackage(new ReactNativeIntlPackage())
-	  .setUseDeveloperSupport(BuildConfig.DEBUG)
-	  .setInitialLifecycleState(LifecycleState.RESUMED)
-	  .build();
+      mReactInstanceManager = ReactInstanceManager.builder()
+        .setApplication(getApplication())
+        .setBundleAssetName("index.android.bundle")
+        .setJSMainModuleName("index.android")
+        .addPackage(new MainReactPackage())
++     .addPackage(new ReactNativeIntlPackage())
+        .setUseDeveloperSupport(BuildConfig.DEBUG)
+        .setInitialLifecycleState(LifecycleState.RESUMED)
+        .build();
 
-	mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
+      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
 
-	setContentView(mReactRootView);
-      }
+      setContentView(mReactRootView);
+    }
     ...
   }
   ```
+
 4. To translate messages, create `i18n` folder and put `.mo` files into it. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
 
 ## API
@@ -89,16 +95,19 @@ In order to use this module in your Android project, take the following steps.
 * **NumberFormat** objects are similar to JavaScript [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) except `format` method returns a Promise.
 * **Translation** objects load translation catalog from local file system and translates the passed message into another language. It also supports plural forms.
   * Constructor can take a locale identifier as an argument.
+
     ```
     new Intl.Translation([locale])
     ```
+
   * `getTranslator` returns a Promise that contains message translator function which takes two arguments, message id and optional plural counter. If the function can't find a proper string, it returns the message id.
+
     ```
     new Intl.Translation().getTranslator().then( _ => {
       console.log( _("Hello, world") );
     });
 
-    // or you can use await syntax in an async function
+    // or you can use await syntax
 
     const _ = await new Intl.Translation().getTranslator();
     console.log( _("Hello, world") );
@@ -118,8 +127,8 @@ Like [the JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaS
 var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
 
 new Intl.DateTimeFormat('en-US').format(date).then(
-    str => console.log(str)
-    );
+  str => console.log(str)
+);
 ```
 
 If you omit the locale identifier, system locale will be used by default.
