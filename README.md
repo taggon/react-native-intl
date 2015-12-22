@@ -113,7 +113,7 @@ In order to use this module in your Android project, take the following steps.
     console.log( _("Hello, world") );
     ```
 
-## How to format date/number
+## How to format dates/numbers
 
 Load `react-native-intl` module in your JavaScript code.
 
@@ -133,7 +133,7 @@ new Intl.DateTimeFormat('en-US').format(date).then(
 
 If you omit the locale identifier, system locale will be used by default.
 
-## How to get a translation
+## How to translate messages
 
 Load `react-native-intl` module in your JavaScript code and create an translation instance with a your locale. Then, call `translate` method that takes message id and optional plural counter. Note that it returns a Promise.
 
@@ -148,7 +148,7 @@ french.getTranslator().then( _ => {
   console.log(_("%d products", 2)); // "%d produits"
 
   /*
-   Actually singular/plural messages shares message id.
+   Actually singular/plural messages share message id.
    You can get plural messages with singular id and vice versa.
   */
   consoel.log(_("one product", 2)); // "%d produits"
