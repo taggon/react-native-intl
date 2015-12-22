@@ -1,6 +1,6 @@
 {
   "name": "react-native-intl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native module shipped native Intl implementation and Translation extension",
   "main": "index.js",
   "scripts": {
@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/taggon/react-native-intl/issues"
   },
-  "homepage": "https://github.com/taggon/react-native-intl#readme",
-  "dependencies": {
-    "react-native": "^0.16.0"
-  }
+  "homepage": "https://github.com/taggon/react-native-intl#readme"
 }

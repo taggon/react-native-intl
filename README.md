@@ -1,4 +1,5 @@
 # react-native-intl
+
 Native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) implementation and Translation extension. The extension loads translation catalog from [gettext `.mo` files](https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html). Note that PO files are **not supported.**
 
 ## Features
@@ -8,9 +9,9 @@ Native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 * [*DateTimeFormat*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat)  
 Constructor for objects that format dates and times to match a specified locale.
 * [*NumberFormat*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat)  
-Constructor for objects that format numbers to match a specified locale.
+  Constructor for objects that format numbers to match a specified locale.
 * *Translation* (not a part of ECMAScript)  
-Constructor for objects that translate messages into another languages using `.mo` files.
+  Constructor for objects that translate messages into another languages using `.mo` files.
 
 ## Installation
 
@@ -19,6 +20,7 @@ $ npm install react-native-intl --save
 ```
 
 ### iOS Setup
+
 Once you've installed the module, you need to integrate it into the Xcode project of your React Native app. To do this, do the following steps.
 
 1. Open your app's Xcode project
@@ -28,6 +30,7 @@ Once you've installed the module, you need to integrate it into the Xcode projec
 5. To translate messages, create `i18n` folder and put `.mo` files into it. Drag the folder to just below the project in Xcode. Choose *Create folder references*.
 
 ### Android Setup
+
 In order to use this module in your Android project, take the following steps.
 
 1. In your `android/settings.gradle` file, add the following code:
@@ -40,7 +43,7 @@ In order to use this module in your Android project, take the following steps.
   ...
   dependencies {
     ...
-    compile project(':react-native-intl')
+      compile project(':react-native-intl')
   }
   ```
 3. Update your `MainActivity.java` file to look like this (without preceding the `+` signs).
@@ -57,30 +60,31 @@ In order to use this module in your Android project, take the following steps.
     private ReactRootView mReactRootView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      mReactRootView = new ReactRootView(this);
+      protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	mReactRootView = new ReactRootView(this);
 
-      mReactInstanceManager = ReactInstanceManager.builder()
-        .setApplication(getApplication())
-        .setBundleAssetName("index.android.bundle")
-        .setJSMainModuleName("index.android")
-        .addPackage(new MainReactPackage())
-  +    .addPackage(new ReactNativeIntlPackage())
-        .setUseDeveloperSupport(BuildConfig.DEBUG)
-        .setInitialLifecycleState(LifecycleState.RESUMED)
-        .build();
+	mReactInstanceManager = ReactInstanceManager.builder()
+	  .setApplication(getApplication())
+	  .setBundleAssetName("index.android.bundle")
+	  .setJSMainModuleName("index.android")
+	  .addPackage(new MainReactPackage())
+	  +    .addPackage(new ReactNativeIntlPackage())
+	  .setUseDeveloperSupport(BuildConfig.DEBUG)
+	  .setInitialLifecycleState(LifecycleState.RESUMED)
+	  .build();
 
-      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
+	mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
 
-      setContentView(mReactRootView);
-    }
+	setContentView(mReactRootView);
+      }
     ...
   }
   ```
 4. To translate messages, create `i18n` folder and put `.mo` files into it. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
 
 ## API
+
 * **DateTimeFormat** objects are similar to JavaScript  [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) except `format` method returns a Promise.
 * **NumberFormat** objects are similar to JavaScript [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) except `format` method returns a Promise.
 * **Translation** objects load translation catalog from local file system and translates the passed message into another language. It also supports plural forms.
@@ -88,12 +92,20 @@ In order to use this module in your Android project, take the following steps.
     ```
     new Intl.Translation([locale])
     ```
-  * `format` returns a Promise that contains translation string matched to the passed message id. If the object can't find a proper string, it returns the message id.
+  * `getTranslator` returns a Promise that contains message translator function which takes two arguments, message id and optional plural counter. If the function can't find a proper string, it returns the message id.
     ```
-    format(msgid[, pluralCounter])
+    new Intl.Translation().getTranslator().then( _ => {
+      console.log( _("Hello, world") );
+    });
+
+    // or you can use await syntax in an async function
+
+    const _ = await new Intl.Translation().getTranslator();
+    console.log( _("Hello, world") );
     ```
 
 ## How to format date/number
+
 Load `react-native-intl` module in your JavaScript code.
 
 ```
@@ -106,46 +118,33 @@ Like [the JavaScript objects](https://developer.mozilla.org/en-US/docs/Web/JavaS
 var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
 
 new Intl.DateTimeFormat('en-US').format(date).then(
-	str => console.log(str)
-);
+    str => console.log(str)
+    );
 ```
 
 If you omit the locale identifier, system locale will be used by default.
 
 ## How to get a translation
+
 Load `react-native-intl` module in your JavaScript code and create an translation instance with a your locale. Then, call `translate` method that takes message id and optional plural counter. Note that it returns a Promise.
 
 ```
 const Intl = require('react-native-intl');
 const french = new Intl.Translation('fr-FR');
 
-french.translate('Hello').then(
-	str => console.log(str) // "Allô"
-);
+french.getTranslator( _ => {
+  console.log(_("Hello")); // "Allô"
+  console.log(_("Not translated message")); // "Not translated message" returns the original message
+  console.log(_("one product")); // "un produit"
+  console.log(_("%d products", 2)); // "%d produits"
 
-french.translate('Not translated message').then(
-	str => console.log(str) // "Not translated message"
-);
-
-french.translate('one product').then(
-	str => console.log(str) // "un produit"
-);
-
-french.translate('%d products', 2).then(
-	str => console.log(str) // "%d produits"
-);
-
-/*
- Actually singular/plural messages shares message id.
- You can get plural messages with singular id and vice versa.
-*/
-french.translate('one product', 2).then(
-	str => console.log(str) // "%d produits"
-);
-
-french.translate('%d product', 1).then(
-	str => console.log(str) // "un produit"
-);
+  /*
+   Actually singular/plural messages shares message id.
+   You can get plural messages with singular id and vice versa.
+  */
+  consoel.log(_("one product", 2)); // "%d produits"
+  consoel.log(_("%d product", 1)); // "un produit"
+});
 ```
 
 ## Why gettext `.mo` files?
@@ -158,4 +157,8 @@ Because of the difference of platforms, some features can be limited based on pl
 
 ## Feedback
 
-This project is in early stage and I'm very new in both native platforms and even the programming languages. In fact, I've created this module learning them from basic syntax. So, the code may not be fine, unsafe or insecure. If you find anything, don't hesitate to leave your feedback. I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction (because it is not my native tongue).
+This project is in early stage and I'm very new in both native platforms and even the programming languages.
+In fact, I've created this module learning them from basic syntax. So, the code may not be fine, unsafe or insecure.
+
+If you find anything, don't hesitate to leave your feedback.
+I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction (because it is not my native tongue).
