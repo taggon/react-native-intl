@@ -135,7 +135,7 @@ If you omit the locale identifier, system locale will be used by default.
 
 ## How to translate messages
 
-Load `react-native-intl` module in your JavaScript code and create an translation instance with a your locale. Then, call `translate` method that takes message id and optional plural counter. Note that it returns a Promise.
+Load `react-native-intl` module in your JavaScript code and create a translation instance with your locale. Get a translator function through the promise `getTranslator()` returned and call it to get translated messages. The translator function works like ngettext, you can pass a plural counter to it.
 
 ```javascript
 const Intl = require('react-native-intl');
