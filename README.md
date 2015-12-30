@@ -163,6 +163,30 @@ Although I prefer to use `json` format in most cases, `mo` format is better as i
 ## Notes
 
 Because of the difference of platforms, some features can be limited based on platform.
+The following table shows what features supported on each platform.
+
+|            Feature           | iOS | Android |
+|------------------------------|-----|---------|
+| Collator                     |  x  |    x    |
+| DateTimeFormat               |  △  |    △    |
+|  - numbering system          |  x  |    x    |
+|  - calendar                  |  o  |    x    |
+|  - resolveOptions()          |  x  |    x    |
+|  - options                   |  △  |    △    |
+|  -- locale matcher           |  x  |    x    |
+|  -- format matcher           |  x  |    x    |
+|  -- hour12                   |  x  |    x    |
+|  -- all other options        |  o  |    o    |
+| NumberFormat                 |  △  |    △    |
+|  - numbering system          |  x  |    x    |
+|  - resolveOptions()          |  x  |    x    |
+|  - options                   |  △  |    △    |
+|  -- locale matcher           |  x  |    x    |
+|  -- currencyDisplay          |  x  |    x    |
+|  -- minimumSignificantDigits |  o  |    x    |
+|  -- maximumSignificantDigits |  o  |    x    |
+|  -- all other options        |  o  |    o    |
+| Translation                  |  o  |    o    |
 
 ## Feedback
 
