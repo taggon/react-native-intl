@@ -100,7 +100,7 @@ In order to use this module in your Android project, take the following steps.
     new Intl.Translation([locale])
     ```
 
-  * `getTranslator` returns a Promise that contains message translator function which takes two arguments, message id and optional plural counter. If the function can't find a proper string, it returns the message id.
+  * `getTranslator` returns a Promise that passes the message translator function which takes two arguments, message id and optional plural counter. If the function can't find any proper string, it returns the message id.
 
     ```
     new Intl.Translation().getTranslator().then( _ => {
@@ -187,5 +187,5 @@ The following table shows what features supported on each platform.
 This project is in early stage and I'm very new in both native platforms and even the programming languages.
 In fact, I've created this module learning them from basic syntax. So, the code may not be fine, unsafe or insecure.
 
-If you find anything, don't hesitate to leave your feedback.
-I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction (because it is not my native tongue).
+I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction.
+Don't hesitate to leave your feedback.
