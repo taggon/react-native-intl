@@ -27,7 +27,7 @@ Once you've installed the module, you need to integrate it into the Xcode projec
 2. Find `RNIntl.xcodeproj` file within the `node_modules/react-native-intl` directory, and drag it into `Libraries` category in Xcode.
 3. Go to the "Build Phases" tab in your project configuration.
 4. Drag `libRNIntl.a` from `Libraries/RNIntl.xcodeproj` into the "Link Binary With Libraries" section of your project's "Build Phases" configuration.
-5. To translate messages, create `i18n` folder and put `.mo` files into it. Drag the folder to just below the project in Xcode. Choose *Create folder references*.
+5. To translate messages, create `i18n` folder in your React Native project's root and put `.mo` files into the `i18n` folder. Drag the folder to just below the project in Xcode. Choose *Create folder references*.
 
 ### Android Setup
 
@@ -87,7 +87,7 @@ In order to use this module in your Android project, take the following steps.
     }
   ```
 
-4. To translate messages, create `i18n` folder and put `.mo` files into it. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
+4. To translate messages, create `i18n` folder in your React Native project's root and put `.mo` files into the `i18n` folder. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
 
 ## API
 
