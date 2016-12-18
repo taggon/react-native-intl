@@ -28,7 +28,7 @@ RCT_EXPORT_METHOD(formatNumber: (double)number
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:localeIndentifier]];
-    
+
     NSNumber *num = [NSNumber numberWithDouble:number];
 
     if (options) {
@@ -104,7 +104,7 @@ RCT_EXPORT_METHOD(formatDate: (NSDate *) date
 
     if (options) {
         NSString *template = options[@"template"];
-        
+
         // calendar
         if ([options valueForKey:@"calendar"] != nil) {
             formatter.calendar = options[@"calendar"];
@@ -114,7 +114,7 @@ RCT_EXPORT_METHOD(formatDate: (NSDate *) date
         if ([options valueForKey:@"timeZone"] != nil) {
             [formatter setTimeZone:[[NSTimeZone alloc] initWithName:options[@"timeZone"]]];
         }
-        
+
         // hour12
         if ([options objectForKey:@"hour12"]) {
             if ((bool)options[@"hour12"]) {
@@ -153,7 +153,7 @@ RCT_EXPORT_METHOD(loadCatalog: (nonnull NSString *)localeCode
                           errorWithDomain: @"File not found"
                           code: 404
                           userInfo: @{ @"locale": localeCode }];
-        reject( error );
+        reject(@"no_file", @"File not found", error);
         return;
     }
 
