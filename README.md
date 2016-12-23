@@ -159,6 +159,8 @@ Although I prefer to use `json` format in most cases, `mo` format is better as i
 Because of the difference of platforms, some features can be limited based on platform.
 The following table shows what features supported on each platform.
 
+`o` = fully, `△` =  partially, `x` = not supported
+
 |            Feature           | iOS | Android |
 |------------------------------|-----|---------|
 | Collator                     |  x  |    x    |
