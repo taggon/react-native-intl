@@ -17,77 +17,21 @@ Constructor for objects that format dates and times to match a specified locale.
 
 ```
 $ npm install react-native-intl --save
+$ react-native link
 ```
 
-### iOS Setup
+## Translations
 
-Once you've installed the module, you need to integrate it into the Xcode project of your React Native app. To do this, do the following steps.
+Once you've installed the module, you need to refer a folder, which contains translated `.mo` files, to the project.
 
-1. Open your app's Xcode project
-2. Find `RNIntl.xcodeproj` file within the `node_modules/react-native-intl` directory, and drag it into `Libraries` category in Xcode.
-3. Go to the "Build Phases" tab in your project configuration.
-4. Drag `libRNIntl.a` from `Libraries/RNIntl.xcodeproj` into the "Link Binary With Libraries" section of your project's "Build Phases" configuration.
-5. To translate messages, create `i18n` folder in your React Native project's root and put `.mo` files into the `i18n` folder. Drag the folder to just below the project in Xcode. Choose *Create folder references*.
+1. Create `i18n` folder in your React Native project's root.
+2. Put `.mo` translation files into the folder.
+3. The files should be named with locale code. For instance, `fr_FR.mo` will be used for French locale.
 
-### Android Setup
+Then, you need to...
 
-In order to use this module in your Android project, take the following steps.
-
-1. In your `android/settings.gradle` file, add the following code:
-
-  ```
-  include ':rnintl'
-  project(':rnintl').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-intl/android')
-  ```
-
-2. In your `android/app/build.gradle` file, add `:react-native-intl` project as a dependency (note that **app** folder):
-
-  ```
-  ...
-  dependencies {
-    ...
-    compile project(':rnintl')
-  }
-  ```
-
-3. Update your `MainActivity.java` file to look like this (without preceding the `+` signs).
-
-  ```diff
-  package com.myapp;
-
-  + import kim.taegon.rnintl.ReactNativeIntlPackage;
-
-  ....
-
-  public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-
-    private ReactInstanceManager mReactInstanceManager;
-    private ReactRootView mReactRootView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      mReactRootView = new ReactRootView(this);
-
-      mReactInstanceManager = ReactInstanceManager.builder()
-        .setApplication(getApplication())
-        .setBundleAssetName("index.android.bundle")
-        .setJSMainModuleName("index.android")
-        .addPackage(new MainReactPackage())
-+     .addPackage(new ReactNativeIntlPackage())
-          .setUseDeveloperSupport(BuildConfig.DEBUG)
-          .setInitialLifecycleState(LifecycleState.RESUMED)
-          .build();
-
-        mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
-
-        setContentView(mReactRootView);
-      }
-      ...
-    }
-  ```
-
-4. To translate messages, create `i18n` folder in your React Native project's root and put `.mo` files into the `i18n` folder. Then, copy/link the folder into `android/app/src/main/assets`. You may need to create the `assets` folder.
+- drag the folder to your project in Xcode and create a folder reference for iOS project.
+- create `PROJECT_ROOT/android/app/src/main/assets` (unless it exists) and copy/link the `i18n` folder into the `assets` folder for Android project.
 
 ## API
 
@@ -189,5 +133,5 @@ The following table shows what features supported on each platform.
 This project is in early stage and I'm very new in both native platforms and even the programming languages.
 In fact, I've created this module learning them from basic syntax. So, the code may not be fine, unsafe or insecure.
 
-I will welcome any contributions from you including pull requests, bug reports, suggestions and even English correction.
+I will welcome any contributions from you including pull requests, bug reports, suggestions and even documentation.
 Don't hesitate to leave your feedback.
