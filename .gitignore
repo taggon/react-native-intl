@@ -28,3 +28,7 @@ node_modules
 
 .idea
 android/build
+android/local.properties
+
+# OSX
+.DS_Store
